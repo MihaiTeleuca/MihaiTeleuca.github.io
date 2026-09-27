@@ -1,0 +1,14 @@
+UPLOAD INSTRUCTIONS
+
+1. Open https://github.com/MihaiTeleuca/MihaiTeleuca.github.io
+2. Click Add file -> Upload files
+3. Extract this ZIP.
+4. Upload index.html, styles.css, script.js and README.md directly into the repository root.
+5. Commit message: Launch premium personal portfolio
+6. Click Commit changes.
+7. Go to Settings -> Pages.
+8. Build and deployment -> Source: Deploy from a branch.
+9. Branch: main ; Folder: / (root) ; Save.
+10. Open https://MihaiTeleuca.github.io
+
+IMPORTANT: index.html must be directly at the top level of the repository, not inside another folder.
