@@ -1,14 +1,32 @@
-UPLOAD INSTRUCTIONS
+REPLACE YOUR CURRENT SITE WITH V2 PERFORMANCE
 
-1. Open https://github.com/MihaiTeleuca/MihaiTeleuca.github.io
-2. Click Add file -> Upload files
-3. Extract this ZIP.
-4. Upload index.html, styles.css, script.js and README.md directly into the repository root.
-5. Commit message: Launch premium personal portfolio
-6. Click Commit changes.
-7. Go to Settings -> Pages.
-8. Build and deployment -> Source: Deploy from a branch.
-9. Branch: main ; Folder: / (root) ; Save.
-10. Open https://MihaiTeleuca.github.io
+Repository:
+https://github.com/MihaiTeleuca/MihaiTeleuca.github.io
 
-IMPORTANT: index.html must be directly at the top level of the repository, not inside another folder.
+FILES TO REPLACE:
+- index.html
+- styles.css
+- script.js
+- README.md
+
+METHOD:
+
+1. Extract this ZIP.
+2. Open your repository.
+3. Open each existing file and replace its content, OR upload the files and choose to overwrite if GitHub offers that flow.
+4. Commit with:
+   Performance V2 - remove heavy effects and add custom scrollbar
+
+GitHub Pages should redeploy automatically from main.
+
+Your website:
+https://MihaiTeleuca.github.io
+
+WHAT IS CUSTOM:
+- Violet custom browser scrollbar
+- Violet/blue scroll progress bar at the very top
+- Live GitHub profile/repository/activity data
+- Responsive mobile layout
+
+PERFORMANCE NOTE:
+This V2 intentionally removes canvas particles, backdrop-filter blur, mouse glow, giant animated blur effects and spinning orbits. Those were the biggest likely sources of lag.

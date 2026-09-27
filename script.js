@@ -1,1 +1,175 @@
-const U="MihaiTeleuca",A="https://api.github.com",$=id=>document.getElementById(id);const esc=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");const ago=d=>{let s=(Date.now()-new Date(d))/1000,u=[["year",31536000],["month",2592000],["day",86400],["hour",3600],["minute",60]];for(const[n,v]of u){let a=Math.floor(s/v);if(a>=1)return a+" "+n+(a>1?"s":"")+" ago"}return"just now"};const age=d=>{let days=Math.floor((Date.now()-new Date(d))/86400000);return days<30?days+" days":days<365?Math.floor(days/30)+" months":Math.floor(days/365)+" years"};async function get(u){let r=await fetch(u,{headers:{Accept:"application/vnd.github+json"}});if(!r.ok)throw Error();return r.json()}async function load(){try{let[user,repos,events]=await Promise.all([get(`${A}/users/${U}`),get(`${A}/users/${U}/repos?per_page=100&sort=updated`),get(`${A}/users/${U}/events/public?per_page=10`)]),stars=repos.reduce((a,r)=>a+(r.stargazers_count||0),0);$("avatar").src=user.avatar_url;$("name").textContent=user.name||"Mihai Teleuca";$("login").textContent="@"+user.login;$("reposTop").textContent=user.public_repos;$("followersTop").textContent=user.followers;$("starsTop").textContent=stars;$("repoCount").textContent=user.public_repos;$("followersCount").textContent=user.followers;$("followingCount").textContent=user.following;$("accountAge").textContent=age(user.created_at);$("status").textContent="Live data connected";let own=repos.filter(r=>!r.fork).slice(0,6);$("projectsGrid").innerHTML=own.length?own.map(r=>`<a class="project glass" href="${r.html_url}" target="_blank"><div class="top"><span class="icon">&lt;/&gt;</span><span>↗</span></div><h3>${esc(r.name)}</h3><p>${esc(r.description||"A public GitHub project by Mihai Teleuca.")}</p><div class="meta"><span>${esc(r.language||"Repository")}</span><span>★ ${r.stargazers_count}</span><span>⑂ ${r.forks_count}</span></div></a>`).join(""):'<div class="placeholder glass">First projects coming soon. This section will populate automatically.</div>';let labels={PushEvent:["⇧","Pushed code"],CreateEvent:["＋","Created something"],WatchEvent:["★","Starred a repository"],ForkEvent:["⑂","Forked a repository"],IssuesEvent:["!","Worked on an issue"],PullRequestEvent:["↗","Updated a pull request"]};$("activityFeed").innerHTML=events.length?events.slice(0,6).map(e=>{let x=labels[e.type]||["•",e.type.replace("Event","")];return`<div class="event"><i>${x[0]}</i><div><b>${x[1]}</b><p>${esc(e.repo?.name||"GitHub")} · ${ago(e.created_at)}</p></div></div>`}).join(""):"No recent public activity yet."}catch(e){$("status").textContent="GitHub data temporarily unavailable";$("projectsGrid").innerHTML='<div class="placeholder glass">Live GitHub data is temporarily unavailable.</div>'}}let words=["Artificial Intelligence.","Cloud Computing.","Python.","Software Development.","modern IT."],wi=0,ci=0,del=false;function type(){let t=$("typed"),w=words[wi];t.textContent=w.slice(0,ci);if(!del&&ci<w.length){ci++;return setTimeout(type,60)}if(!del){del=true;return setTimeout(type,1300)}if(ci>0){ci--;return setTimeout(type,28)}del=false;wi=(wi+1)%words.length;setTimeout(type,220)}function reveal(){let o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");o.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>o.observe(e))}function particles(){let c=$("particles"),x=c.getContext("2d"),w,h,p=[];function resize(){let d=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;c.width=w*d;c.height=h*d;c.style.width=w+"px";c.style.height=h+"px";x.setTransform(d,0,0,d,0,0);p=Array.from({length:Math.min(75,Math.max(28,Math.floor(w/20)))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.3,vx:(Math.random()-.5)*.12,vy:(Math.random()-.5)*.12,a:Math.random()*.4+.12}))}function draw(){x.clearRect(0,0,w,h);p.forEach(q=>{q.x+=q.vx;q.y+=q.vy;if(q.x<0)q.x=w;if(q.x>w)q.x=0;if(q.y<0)q.y=h;if(q.y>h)q.y=0;x.beginPath();x.fillStyle=`rgba(196,181,253,${q.a})`;x.arc(q.x,q.y,q.r,0,Math.PI*2);x.fill()});requestAnimationFrame(draw)}resize();draw();addEventListener("resize",resize)}document.addEventListener("DOMContentLoaded",()=>{$("year").textContent="© "+new Date().getFullYear();reveal();particles();load();type()});
+const GITHUB_USER="MihaiTeleuca";
+const API="https://api.github.com";
+const $=id=>document.getElementById(id);
+
+function formatNumber(value){
+  return new Intl.NumberFormat("en",{notation:value>=1000?"compact":"standard"}).format(value||0);
+}
+function ageText(dateString){
+  const start=new Date(dateString),now=new Date();
+  const days=Math.max(0,Math.floor((now-start)/86400000));
+  if(days<30)return days+" days";
+  if(days<365)return Math.floor(days/30)+" months";
+  const years=Math.floor(days/365);
+  return years+(years===1?" year":" years");
+}
+function timeAgo(dateString){
+  const seconds=Math.floor((Date.now()-new Date(dateString).getTime())/1000);
+  const units=[["year",31536000],["month",2592000],["day",86400],["hour",3600],["minute",60]];
+  for(const [name,value] of units){
+    const amount=Math.floor(seconds/value);
+    if(amount>=1)return amount+" "+name+(amount>1?"s":"")+" ago";
+  }
+  return"just now";
+}
+function escapeHtml(value){
+  return String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+}
+async function getJson(url){
+  const response=await fetch(url,{headers:{Accept:"application/vnd.github+json"}});
+  if(!response.ok)throw new Error("GitHub API request failed");
+  return response.json();
+}
+function eventLabel(event){
+  const repo=event.repo?.name||"GitHub";
+  const labels={
+    PushEvent:["⇧","Pushed code",repo],
+    CreateEvent:["＋","Created something",repo],
+    WatchEvent:["★","Starred a repository",repo],
+    ForkEvent:["⑂","Forked a repository",repo],
+    IssuesEvent:["!","Worked on an issue",repo],
+    PullRequestEvent:["↗","Updated a pull request",repo],
+    IssueCommentEvent:["✦","Commented on GitHub",repo],
+    DeleteEvent:["−","Updated repository structure",repo],
+    ReleaseEvent:["◆","Published a release",repo]
+  };
+  return labels[event.type]||["•",(event.type||"Activity").replace("Event",""),repo];
+}
+async function loadGitHubData(){
+  try{
+    const [user,repos,events]=await Promise.all([
+      getJson(`${API}/users/${GITHUB_USER}`),
+      getJson(`${API}/users/${GITHUB_USER}/repos?per_page=100&sort=updated`),
+      getJson(`${API}/users/${GITHUB_USER}/events/public?per_page=10`)
+    ]);
+    const totalStars=repos.reduce((sum,repo)=>sum+(repo.stargazers_count||0),0);
+
+    $("githubAvatar").src=user.avatar_url;
+    $("githubName").textContent=user.name||"Mihai Teleuca";
+    $("githubLogin").textContent="@"+user.login;
+    $("heroRepos").textContent=formatNumber(user.public_repos);
+    $("heroFollowers").textContent=formatNumber(user.followers);
+    $("heroStars").textContent=formatNumber(totalStars);
+    $("repoCount").textContent=formatNumber(user.public_repos);
+    $("followersCount").textContent=formatNumber(user.followers);
+    $("followingCount").textContent=formatNumber(user.following);
+    $("accountAge").textContent=ageText(user.created_at);
+    $("dataStatus").textContent="Live data connected";
+
+    renderProjects(repos);
+    renderActivity(events);
+  }catch(err){
+    console.error(err);
+    $("dataStatus").textContent="GitHub data temporarily unavailable";
+    $("projectsGrid").innerHTML='<div class="empty-projects card"><h3>Projects are coming.</h3><p>Live repository data is temporarily unavailable.</p></div>';
+    $("activityFeed").innerHTML='<div class="activity-loading">Live GitHub data could not be loaded right now.</div>';
+  }
+}
+function renderProjects(repos){
+  const visible=repos.filter(r=>!r.fork).sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at)).slice(0,6);
+  if(!visible.length){
+    $("projectsGrid").innerHTML='<div class="empty-projects card reveal visible"><h3>First projects coming soon.</h3><p>This section will populate automatically as new public repositories are created.</p></div>';
+    return;
+  }
+  $("projectsGrid").innerHTML=visible.map(repo=>`
+    <a class="project-card card reveal visible" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+      <div class="project-top"><span class="repo-icon">&lt;/&gt;</span><span class="repo-arrow">↗</span></div>
+      <h3>${escapeHtml(repo.name)}</h3>
+      <p>${escapeHtml(repo.description||"A public GitHub project by Mihai Teleuca.")}</p>
+      <div class="repo-meta">
+        <span><i class="lang-dot"></i>${escapeHtml(repo.language||"Repository")}</span>
+        <span>★ ${repo.stargazers_count}</span>
+        <span>⑂ ${repo.forks_count}</span>
+      </div>
+    </a>`).join("");
+}
+function renderActivity(events){
+  if(!events.length){
+    $("activityFeed").innerHTML='<div class="activity-loading">No recent public GitHub events yet.</div>';
+    return;
+  }
+  $("activityFeed").innerHTML=events.slice(0,6).map(event=>{
+    const [icon,title,subtitle]=eventLabel(event);
+    return `<div class="activity-item"><span class="activity-icon">${icon}</span><div><strong>${escapeHtml(title)}</strong><p>${escapeHtml(subtitle)} · ${timeAgo(event.created_at)}</p></div></div>`;
+  }).join("");
+}
+
+/* Lightweight type effect: only one short timeout chain, no RAF loop */
+const words=["Artificial Intelligence.","Cloud Computing.","Python.","Software Development.","modern IT."];
+let wi=0,ci=0,deleting=false,typingTimer=null;
+function typeLoop(){
+  const target=$("typedText");
+  if(!target||document.hidden)return;
+  const word=words[wi];
+  target.textContent=word.slice(0,ci);
+
+  if(!deleting&&ci<word.length){ci++;typingTimer=setTimeout(typeLoop,62);return}
+  if(!deleting&&ci===word.length){deleting=true;typingTimer=setTimeout(typeLoop,1300);return}
+  if(deleting&&ci>0){ci--;typingTimer=setTimeout(typeLoop,30);return}
+
+  deleting=false;
+  wi=(wi+1)%words.length;
+  typingTimer=setTimeout(typeLoop,220);
+}
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){
+    clearTimeout(typingTimer);
+  }else{
+    clearTimeout(typingTimer);
+    typingTimer=setTimeout(typeLoop,120);
+  }
+});
+
+/* One-shot reveal only */
+function setupReveal(){
+  if(!("IntersectionObserver"in window)){
+    document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+    return;
+  }
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.08,rootMargin:"40px 0px"});
+  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+}
+
+/* Custom progress bar: transform only, passive scroll, no layout thrashing */
+function setupScrollProgress(){
+  const bar=$("scrollProgress");
+  let ticking=false;
+  const update=()=>{
+    const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+    const p=Math.min(1,Math.max(0,window.scrollY/max));
+    bar.style.transform=`scaleX(${p})`;
+    ticking=false;
+  };
+  window.addEventListener("scroll",()=>{
+    if(!ticking){
+      requestAnimationFrame(update);
+      ticking=true;
+    }
+  },{passive:true});
+  update();
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  $("year").textContent="© "+new Date().getFullYear();
+  setupReveal();
+  setupScrollProgress();
+  loadGitHubData();
+  typeLoop();
+});
