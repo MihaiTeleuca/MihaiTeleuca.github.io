@@ -1,39 +1,37 @@
-# MihaiTeleuca.github.io — V5 Complete Portfolio
+# MihaiTeleuca.github.io — V7 Ultra Professional
 
-A bilingual, performance-conscious personal technology portfolio for Mihai Teleuca.
+A single-upload, bilingual, high-detail portfolio with clean client-side routes.
 
-## Main focus areas
-- Python
-- AI Engineering
-- Cloud Engineering
-- DevOps Engineering
-- Cybersecurity Engineering
-- Ethical Hacking / Penetration Testing in authorized labs
-- IT Systems / Infrastructure Engineering
-- Network Engineering
-- Software Engineering
-- Data & Machine Learning Engineering
+## Clean URLs
+- `/acasa`
+- `/despre`
+- `/roadmap`
+- `/proiecte`
+- `/certificari`
+- `/github`
+- `/contact`
 
-## Features
-- English / Romanian language switcher
-- Dark / light violet theme
-- Custom violet scrollbar
-- Responsive layout
-- Live GitHub statistics
-- Live public repository list
-- Detailed About section
-- Current skills
-- Full engineering roadmap
-- Course & certification plan
-- Featured project concepts
-- Learning philosophy
-- Social profiles
-- Location: Lake King, Western Australia, Australia
+GitHub Pages serves `404.html` for direct clean-route visits; that file contains the same lightweight app shell and renders the requested route client-side.
 
-## Social profiles
+## Why this build is performance-friendly
+- No canvas
+- No particles
+- No continuous animation loops
+- No mouse-follow effects
+- No `backdrop-filter`
+- No animated background
+- No scroll listeners
+- GitHub API data is fetched once and cached in `sessionStorage`
+- Only simple hover transitions and static gradients
+
+## Accuracy
+Unfinished projects are shown as In Development / Prototype / Concept.
+Future engineering paths and certifications are shown as planned/current learning rather than falsely claiming completion.
+
+## Public profiles
 - GitHub: https://github.com/MihaiTeleuca
 - Instagram: https://www.instagram.com/mihai_teleuca/
 - Facebook: https://www.facebook.com/mihai.teleuca/
 
-## Performance
-The design deliberately avoids canvas, animated particles, continuous animation loops, backdrop blur and mouse-following effects.
+## Public location
+Lake King, Western Australia, Australia
