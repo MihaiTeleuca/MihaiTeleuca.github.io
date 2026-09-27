@@ -1,151 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0712" />
-  <meta name="description" content="Mihai Teleuca — personal technology portfolio focused on AI, Cloud, Python and Software Development." />
+  <meta name="theme-color" content="#0b0811" />
+  <meta name="description" content="Mihai Teleuca — AI, Cloud, Python and Software Development portfolio." />
+  <meta property="og:title" content="Mihai Teleuca | Tech Portfolio" />
+  <meta property="og:description" content="AI • Cloud • Python • Software Development" />
+  <meta property="og:type" content="website" />
   <title>Mihai Teleuca | Tech Portfolio</title>
   <link rel="preconnect" href="https://api.github.com">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="nav">
-      <a href="#home" class="brand">
-        <span class="brand-mark">MT</span>
-        <span>Mihai Teleuca</span>
-      </a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <div class="language-switcher" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <span>/</span>
+          <button class="lang-btn" data-lang="ro">RO</button>
+        </div>
 
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#stack">Stack</a>
-        <a href="#projects">Projects</a>
-        <a href="#activity">Activity</a>
+        <a class="brand" href="#home" aria-label="Home">
+          <span class="brand-logo">MT</span>
+          <span class="brand-copy">
+            <strong>Mihai Teleuca</strong>
+            <small data-i18n="brandRole">Tech Portfolio</small>
+          </span>
+        </a>
+      </div>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#skills" data-i18n="navSkills">Skills</a>
+        <a href="#projects" data-i18n="navProjects">Projects</a>
+        <a href="#github" data-i18n="navGitHub">GitHub</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
 
-      <a class="github-link" href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <div class="top-actions">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+          <span class="theme-icon">◐</span>
+          <span data-i18n="themeLabel">Theme</span>
+        </button>
+        <a class="github-button" href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
     </div>
   </header>
 
   <main>
     <section id="home" class="section hero">
       <div class="hero-copy">
-        <div class="eyebrow">PERSONAL TECH PORTFOLIO</div>
-        <h1>Hi, I'm <span>Mihai Teleuca.</span></h1>
-        <h2>AI • Cloud • Python • Software Development</h2>
-        <p>
-          Exploring Artificial Intelligence, Cloud Computing, Python and Software Development
-          through practical projects, continuous learning and a strong interest in modern technology.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">Explore projects</a>
-          <a class="button secondary" href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">View GitHub</a>
+        <div class="kicker">
+          <span class="status-dot"></span>
+          <span data-i18n="heroKicker">PERSONAL TECHNOLOGY PORTFOLIO</span>
         </div>
 
-        <div class="quick-stats">
-          <div><strong id="heroRepos">—</strong><span>Public repos</span></div>
-          <div><strong id="heroFollowers">—</strong><span>Followers</span></div>
-          <div><strong id="heroStars">—</strong><span>Total stars</span></div>
+        <h1>
+          <span data-i18n="heroHello">Hi, I'm</span>
+          <span class="hero-name">Mihai Teleuca.</span>
+        </h1>
+
+        <p class="hero-title" data-i18n="heroTitle">AI • Cloud • Python • Software Development</p>
+
+        <p class="hero-text" data-i18n="heroText">
+          I am building my path in technology through practical projects, continuous learning and a strong focus on modern software, artificial intelligence and cloud systems.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#projects" data-i18n="heroProjects">Explore projects</a>
+          <a class="btn btn-secondary" href="#contact" data-i18n="heroContact">Contact & socials</a>
+        </div>
+
+        <div class="hero-metrics">
+          <article>
+            <strong id="heroRepos">—</strong>
+            <span data-i18n="metricRepos">Public repos</span>
+          </article>
+          <article>
+            <strong id="heroFollowers">—</strong>
+            <span data-i18n="metricFollowers">Followers</span>
+          </article>
+          <article>
+            <strong id="heroStars">—</strong>
+            <span data-i18n="metricStars">Total stars</span>
+          </article>
         </div>
       </div>
 
-      <aside class="profile-card">
-        <img id="githubAvatar" src="https://avatars.githubusercontent.com/u/285664462?v=4" alt="Mihai Teleuca" width="112" height="112" decoding="async" />
-        <h3 id="githubName">Mihai Teleuca</h3>
-        <p id="githubLogin">@MihaiTeleuca</p>
-
-        <div class="tags">
-          <span>AI</span><span>Cloud</span><span>Python</span><span>Software</span>
+      <aside class="identity-card">
+        <div class="identity-topline">
+          <span data-i18n="identityLive">LIVE PROFILE</span>
+          <span class="online">● <span data-i18n="identityOnline">online</span></span>
         </div>
 
-        <div class="live-row">
-          <span class="live-dot"></span>
-          <span id="dataStatus">Loading public GitHub data…</span>
+        <div class="avatar-shell">
+          <img id="githubAvatar" src="https://avatars.githubusercontent.com/u/285664462?v=4" alt="Mihai Teleuca" width="124" height="124" decoding="async" />
+        </div>
+
+        <h2 id="githubName">Mihai Teleuca</h2>
+        <p id="githubLogin">@MihaiTeleuca</p>
+
+        <div class="identity-tags">
+          <span>AI</span>
+          <span>Cloud</span>
+          <span>Python</span>
+          <span>Web</span>
+          <span>Software</span>
+        </div>
+
+        <div class="identity-info">
+          <div>
+            <small data-i18n="identityFocus">FOCUS</small>
+            <strong data-i18n="identityFocusValue">Learning & building</strong>
+          </div>
+          <div>
+            <small data-i18n="identityBase">BASE</small>
+            <strong data-i18n="identityBaseValue">Germany</strong>
+          </div>
+        </div>
+
+        <div class="api-status">
+          <span class="status-dot"></span>
+          <span id="dataStatus" data-i18n="identityLoading">Loading GitHub data…</span>
         </div>
       </aside>
     </section>
 
-    <section id="about" class="section lazy-section">
-      <div class="section-heading">
-        <span>01 / ABOUT</span>
-        <h2>Technology is where curiosity becomes something real.</h2>
+    <section id="about" class="section">
+      <div class="section-head">
+        <span>01</span>
+        <div>
+          <p data-i18n="aboutEyebrow">ABOUT ME</p>
+          <h2 data-i18n="aboutTitle">Curious by nature. Technical by choice.</h2>
+        </div>
       </div>
 
-      <div class="about-grid">
-        <article class="panel about-main">
-          <p class="lead">
-            I'm building my path in technology with a focus on practical learning,
-            real projects and continuous improvement.
+      <div class="about-layout">
+        <article class="feature-panel about-story">
+          <p class="lead" data-i18n="aboutLead">
+            I am focused on creating a strong foundation in IT while turning what I learn into real, visible projects.
           </p>
-          <p>
-            My current interests include Artificial Intelligence, Cloud Computing, Python,
-            software development and modern IT systems. This portfolio grows together with
-            my skills, projects and professional journey.
+          <p data-i18n="aboutBody">
+            My current interests include Artificial Intelligence, Cloud Computing, Python, web technologies and software development. I prefer learning through practice, experimenting, building and improving step by step.
           </p>
+
+          <div class="values">
+            <div><span>01</span><strong data-i18n="valueLearn">Learn deeply</strong></div>
+            <div><span>02</span><strong data-i18n="valueBuild">Build practically</strong></div>
+            <div><span>03</span><strong data-i18n="valueImprove">Improve constantly</strong></div>
+          </div>
         </article>
 
-        <div class="focus-grid">
-          <article class="panel"><b>01</b><h3>Artificial Intelligence</h3><p>Learning modern AI systems and practical applications.</p></article>
-          <article class="panel"><b>02</b><h3>Cloud Computing</h3><p>Exploring cloud infrastructure, services and deployment.</p></article>
-          <article class="panel"><b>03</b><h3>Python</h3><p>Building programming fundamentals through hands-on practice.</p></article>
-          <article class="panel"><b>04</b><h3>Software Development</h3><p>Turning ideas into structured and maintainable projects.</p></article>
+        <div class="about-cards">
+          <article class="mini-card">
+            <span class="mini-icon">AI</span>
+            <h3 data-i18n="aboutAI">Artificial Intelligence</h3>
+            <p data-i18n="aboutAIBody">Understanding modern AI concepts, tools and practical use cases.</p>
+          </article>
+
+          <article class="mini-card">
+            <span class="mini-icon">CL</span>
+            <h3 data-i18n="aboutCloud">Cloud Computing</h3>
+            <p data-i18n="aboutCloudBody">Exploring cloud services, infrastructure and scalable systems.</p>
+          </article>
+
+          <article class="mini-card">
+            <span class="mini-icon">PY</span>
+            <h3 data-i18n="aboutPython">Python</h3>
+            <p data-i18n="aboutPythonBody">Building programming fundamentals through hands-on exercises.</p>
+          </article>
+
+          <article class="mini-card">
+            <span class="mini-icon">SD</span>
+            <h3 data-i18n="aboutSoftware">Software Development</h3>
+            <p data-i18n="aboutSoftwareBody">Turning ideas into structured, maintainable digital products.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="stack" class="section lazy-section">
-      <div class="section-heading">
-        <span>02 / CURRENT STACK</span>
-        <h2>Skills I'm actively building.</h2>
-      </div>
-
-      <div class="stack-grid">
-        <div class="stack-card"><strong>Python</strong><span>Programming</span></div>
-        <div class="stack-card"><strong>Git & GitHub</strong><span>Version Control</span></div>
-        <div class="stack-card"><strong>HTML</strong><span>Web</span></div>
-        <div class="stack-card"><strong>CSS</strong><span>Web Design</span></div>
-        <div class="stack-card"><strong>JavaScript</strong><span>Learning</span></div>
-        <div class="stack-card"><strong>AI</strong><span>Learning Path</span></div>
-        <div class="stack-card"><strong>Cloud</strong><span>Learning Path</span></div>
-        <div class="stack-card"><strong>IT Systems</strong><span>Core Interest</span></div>
-      </div>
-    </section>
-
-    <section id="projects" class="section lazy-section">
-      <div class="section-heading">
-        <span>03 / LIVE PROJECTS</span>
-        <h2>My public GitHub repositories.</h2>
-      </div>
-      <div id="projectsGrid" class="projects-grid">
-        <div class="panel empty">Loading repositories…</div>
-      </div>
-    </section>
-
-    <section id="activity" class="section lazy-section">
-      <div class="section-heading">
-        <span>04 / LIVE ACTIVITY</span>
-        <h2>Public GitHub metrics.</h2>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-card"><strong id="repoCount">—</strong><span>Public repositories</span></div>
-        <div class="stat-card"><strong id="followersCount">—</strong><span>Followers</span></div>
-        <div class="stat-card"><strong id="followingCount">—</strong><span>Following</span></div>
-        <div class="stat-card"><strong id="accountAge">—</strong><span>Account age</span></div>
-      </div>
-    </section>
-
-    <section class="section connect lazy-section">
-      <div class="connect-card">
+    <section id="skills" class="section">
+      <div class="section-head">
+        <span>02</span>
         <div>
-          <span class="tiny">LET'S CONNECT</span>
-          <h2>Building in public, one project at a time.</h2>
+          <p data-i18n="skillsEyebrow">SKILLS & LEARNING</p>
+          <h2 data-i18n="skillsTitle">The stack I am actively building.</h2>
         </div>
-        <div class="socials">
-          <a href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="https://www.instagram.com/mihai_teleuca/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card"><div class="skill-top"><strong>Python</strong><span data-i18n="statusLearning">Learning</span></div><p data-i18n="skillPython">Programming fundamentals, loops, conditions, functions and practical problem solving.</p><div class="skill-line"><i style="width:58%"></i></div></article>
+        <article class="skill-card"><div class="skill-top"><strong>Git & GitHub</strong><span data-i18n="statusActive">Active</span></div><p data-i18n="skillGit">Repositories, commits, version control and publishing web projects.</p><div class="skill-line"><i style="width:62%"></i></div></article>
+        <article class="skill-card"><div class="skill-top"><strong>HTML & CSS</strong><span data-i18n="statusBuilding">Building</span></div><p data-i18n="skillWeb">Responsive layouts, modern UI structure and visual presentation.</p><div class="skill-line"><i style="width:55%"></i></div></article>
+        <article class="skill-card"><div class="skill-top"><strong>JavaScript</strong><span data-i18n="statusLearning">Learning</span></div><p data-i18n="skillJS">Client-side interaction, DOM logic and data-driven interfaces.</p><div class="skill-line"><i style="width:35%"></i></div></article>
+        <article class="skill-card"><div class="skill-top"><strong>Artificial Intelligence</strong><span data-i18n="statusLearningPath">Learning path</span></div><p data-i18n="skillAI">AI foundations, generative AI, prompt engineering and AI tooling.</p><div class="skill-line"><i style="width:46%"></i></div></article>
+        <article class="skill-card"><div class="skill-top"><strong>Cloud</strong><span data-i18n="statusLearningPath">Learning path</span></div><p data-i18n="skillCloud">Cloud concepts, Azure fundamentals and modern infrastructure.</p><div class="skill-line"><i style="width:38%"></i></div></article>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-head">
+        <span>03</span>
+        <div>
+          <p data-i18n="projectsEyebrow">FEATURED BUILDS</p>
+          <h2 data-i18n="projectsTitle">Projects I am developing and shaping.</h2>
+          <p class="section-subtitle" data-i18n="projectsSubtitle">
+            These are presented as active builds and prototypes — polished enough to show the direction, without pretending unfinished work is already complete.
+          </p>
+        </div>
+      </div>
+
+      <div class="projects-showcase">
+        <article class="project-feature project-violet">
+          <div class="project-header">
+            <span class="project-index">01</span>
+            <span class="project-status" data-i18n="projectStatusDev">In development</span>
+          </div>
+          <h3>Nova AI Study Assistant</h3>
+          <p data-i18n="project1Body">A personal AI learning assistant concept designed to organize lessons, explain difficult topics and track progress across AI, Python and Cloud.</p>
+          <div class="project-tech"><span>Python</span><span>AI</span><span>Prompting</span><span>Web</span></div>
+          <div class="project-footer"><span data-i18n="projectTypeAI">AI learning platform</span><span>→</span></div>
+        </article>
+
+        <article class="project-feature project-blue">
+          <div class="project-header">
+            <span class="project-index">02</span>
+            <span class="project-status prototype" data-i18n="projectStatusPrototype">Prototype</span>
+          </div>
+          <h3>CloudPulse Dashboard</h3>
+          <p data-i18n="project2Body">A clean cloud monitoring dashboard concept for visualizing resources, uptime, alerts and infrastructure health in one place.</p>
+          <div class="project-tech"><span>Cloud</span><span>Azure</span><span>Dashboard</span><span>UI</span></div>
+          <div class="project-footer"><span data-i18n="projectTypeCloud">Cloud operations dashboard</span><span>→</span></div>
+        </article>
+
+        <article class="project-feature project-purple">
+          <div class="project-header">
+            <span class="project-index">03</span>
+            <span class="project-status" data-i18n="projectStatusDev">In development</span>
+          </div>
+          <h3>PyFlow Automation Toolkit</h3>
+          <p data-i18n="project3Body">A collection of Python utilities for automating repetitive tasks, working with files and building practical command-line workflows.</p>
+          <div class="project-tech"><span>Python</span><span>Automation</span><span>CLI</span><span>Utilities</span></div>
+          <div class="project-footer"><span data-i18n="projectTypePython">Python automation toolkit</span><span>→</span></div>
+        </article>
+
+        <article class="project-feature project-dark">
+          <div class="project-header">
+            <span class="project-index">04</span>
+            <span class="project-status concept" data-i18n="projectStatusConcept">Concept</span>
+          </div>
+          <h3>DevTrack Portfolio Analytics</h3>
+          <p data-i18n="project4Body">A privacy-aware portfolio analytics idea for tracking visits, popular pages and project interest without pretending to identify individual visitors.</p>
+          <div class="project-tech"><span>Analytics</span><span>Privacy</span><span>Web</span><span>Data</span></div>
+          <div class="project-footer"><span data-i18n="projectTypeAnalytics">Portfolio analytics concept</span><span>→</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="github" class="section">
+      <div class="section-head">
+        <span>04</span>
+        <div>
+          <p data-i18n="githubEyebrow">LIVE GITHUB</p>
+          <h2 data-i18n="githubTitle">Real data from my public GitHub profile.</h2>
+        </div>
+      </div>
+
+      <div class="github-layout">
+        <div class="github-stats">
+          <article><small data-i18n="metricRepos">Public repos</small><strong id="repoCount">—</strong></article>
+          <article><small data-i18n="metricFollowers">Followers</small><strong id="followersCount">—</strong></article>
+          <article><small data-i18n="metricFollowing">Following</small><strong id="followingCount">—</strong></article>
+          <article><small data-i18n="metricAccountAge">Account age</small><strong id="accountAge">—</strong></article>
+        </div>
+
+        <div class="github-repos-panel">
+          <div class="panel-title">
+            <div>
+              <span data-i18n="githubRecent">RECENT REPOSITORIES</span>
+              <h3 data-i18n="githubAuto">Updated automatically</h3>
+            </div>
+            <a href="https://github.com/MihaiTeleuca?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="githubAll">View all ↗</a>
+          </div>
+          <div id="projectsGrid" class="repo-list">
+            <div class="repo-placeholder" data-i18n="githubLoading">Loading repositories…</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section journey">
+      <div class="section-head">
+        <span>05</span>
+        <div>
+          <p data-i18n="journeyEyebrow">LEARNING JOURNEY</p>
+          <h2 data-i18n="journeyTitle">What I am working on next.</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article><span>01</span><div><strong data-i18n="journey1">Python foundations</strong><p data-i18n="journey1Body">Strengthening syntax, logic, functions, data structures and small projects.</p></div></article>
+        <article><span>02</span><div><strong data-i18n="journey2">AI engineering path</strong><p data-i18n="journey2Body">Building a structured understanding of AI, generative AI and practical tools.</p></div></article>
+        <article><span>03</span><div><strong data-i18n="journey3">Cloud & Azure</strong><p data-i18n="journey3Body">Learning cloud architecture, services, deployment and operational thinking.</p></div></article>
+        <article><span>04</span><div><strong data-i18n="journey4">Web & software projects</strong><p data-i18n="journey4Body">Turning knowledge into portfolio projects that can be shown and improved over time.</p></div></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="contact-card">
+        <div>
+          <span class="tiny" data-i18n="contactEyebrow">CONTACT & SOCIALS</span>
+          <h2 data-i18n="contactTitle">Let's connect.</h2>
+          <p data-i18n="contactBody">Follow my learning journey, projects and progress across my public profiles.</p>
+        </div>
+
+        <div class="social-grid">
+          <a href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer"><span><b>GitHub</b><small>@MihaiTeleuca</small></span><strong>↗</strong></a>
+          <a href="https://www.instagram.com/mihai_teleuca/" target="_blank" rel="noopener noreferrer"><span><b>Instagram</b><small>@mihai_teleuca</small></span><strong>↗</strong></a>
+          <a href="https://www.facebook.com/mihai.teleuca/" target="_blank" rel="noopener noreferrer"><span><b>Facebook</b><small>mihai.teleuca</small></span><strong>↗</strong></a>
         </div>
       </div>
     </section>
@@ -153,8 +327,11 @@
 
   <footer>
     <div class="footer-inner">
-      <span>Mihai Teleuca</span>
-      <span>AI • Cloud • Python • Software Development</span>
+      <div class="footer-brand">
+        <span class="brand-logo">MT</span>
+        <div><strong>Mihai Teleuca</strong><small data-i18n="footerRole">AI • Cloud • Python • Software Development</small></div>
+      </div>
+      <p data-i18n="footerText">Built as a living portfolio that grows with every new skill and project.</p>
       <span id="year"></span>
     </div>
   </footer>

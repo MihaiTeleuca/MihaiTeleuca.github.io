@@ -1,27 +1,30 @@
-# MihaiTeleuca.github.io — V3 Ultra Light
+# MihaiTeleuca.github.io — V4 Premium
 
-This build is intentionally static and extremely lightweight.
+Premium bilingual personal technology portfolio.
 
-## Removed completely
-- Canvas
-- `requestAnimationFrame` scroll effects
-- Scroll progress animation
-- Typing animation
-- Reveal animations
-- Fixed navigation
-- Fixed background layers
-- `backdrop-filter`
-- Large shadows
-- Animated gradients
-- Mouse effects
-- Continuous JavaScript timers
-- Public-events API polling/rendering
-
-## Kept
+## Features
+- English / Romanian switcher in the top-left area
+- Dark / light violet theme
 - Custom violet scrollbar
-- Static premium violet design
-- GitHub profile data
-- GitHub repository data
 - Responsive layout
+- Live GitHub public profile statistics
+- Live public repositories
+- About, skills, projects, GitHub, learning journey and social/contact sections
+- GitHub: https://github.com/MihaiTeleuca
+- Instagram: https://www.instagram.com/mihai_teleuca/
+- Facebook: https://www.facebook.com/mihai.teleuca/
 
-The only JavaScript activity is a one-time public GitHub API load when the page opens.
+## Performance approach
+This version intentionally avoids:
+- canvas
+- particles
+- continuous animation loops
+- backdrop-filter blur
+- moving background effects
+- scroll event animations
+- mouse-following effects
+
+Only simple hover transitions, theme/language controls and one-time GitHub API requests are used.
+
+## Project accuracy
+The featured concepts are labelled honestly as **In development**, **Prototype** or **Concept**. Unfinished work should not be represented as completed work on a professional portfolio.
