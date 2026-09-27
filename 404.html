@@ -42,11 +42,24 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="mobile-menu-btn" type="button" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
         <button class="theme-btn" type="button" id="themeToggle" aria-label="Toggle theme">◐</button>
         <a class="nav-cta" href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div>
     </div>
   </header>
+
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="container mobile-drawer-inner">
+      <a href="/acasa" class="route-link" data-route="/acasa" data-t="nav_home">Home</a>
+      <a href="/despre" class="route-link" data-route="/despre" data-t="nav_about">About</a>
+      <a href="/roadmap" class="route-link" data-route="/roadmap" data-t="nav_roadmap">Roadmap</a>
+      <a href="/proiecte" class="route-link" data-route="/proiecte" data-t="nav_projects">Projects</a>
+      <a href="/certificari" class="route-link" data-route="/certificari" data-t="nav_credentials">Credentials</a>
+      <a href="/github" class="route-link" data-route="/github">GitHub</a>
+      <a href="/contact" class="route-link" data-route="/contact" data-t="nav_contact">Contact</a>
+    </div>
+  </div>
 
   <main id="app" class="app-shell" aria-live="polite"></main>
 

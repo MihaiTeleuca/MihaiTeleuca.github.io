@@ -35,3 +35,7 @@ Future engineering paths and certifications are shown as planned/current learnin
 
 ## Public location
 Lake King, Western Australia, Australia
+
+
+## V8 Home page
+The `/acasa` route has been expanded substantially and now has device-specific layouts for ultrawide desktop, standard desktop, laptop, tablet, phone and small phone. A lightweight mobile navigation drawer was added without continuous animation loops.

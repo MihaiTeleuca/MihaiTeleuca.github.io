@@ -187,54 +187,184 @@ function chips(items){return `<div class="chips">${items.map(x=>`<span>${x}</spa
 function sectionHead(n,eyebrow,title,desc=""){return `<div class="section-head"><span class="num">${n}</span><div><p class="eyebrow">${eyebrow}</p><h2 class="section-title">${title}</h2>${desc?`<p class="section-copy">${desc}</p>`:""}</div></div>`}
 
 function homePage(){
-  const x=c().home;
+  const lang=document.documentElement.dataset.lang||"en";
+  const ro=lang==="ro";
   return `
-  <section class="page-hero"><div class="container hero-grid">
-    <div>
-      <span class="kicker"><i></i>${x.kicker}</span>
-      <h1 class="display">${x.hello}<span class="accent">${x.name}</span></h1>
-      <p class="lede">${x.intro}</p>
-      <div class="actions">
-        <a class="btn btn-primary route-link" href="/roadmap" data-route="/roadmap">${x.primary}</a>
-        <a class="btn btn-secondary route-link" href="/proiecte" data-route="/proiecte">${x.secondary}</a>
+  <section class="page-hero home-hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker"><i></i>${ro?"PORTOFOLIU PERSONAL DE TEHNOLOGIE":"PERSONAL TECHNOLOGY PORTFOLIO"}</span>
+        <h1 class="display">${ro?"Salut, sunt":"Hi, I'm"}<span class="accent">Mihai Teleuca.</span></h1>
+        <p class="home-role">AI Engineering • Cloud • DevOps • Cybersecurity • Python • Software Development</p>
+        <p class="lede">${ro
+          ?"Îmi construiesc drumul în tehnologie cu răbdare, disciplină și o direcție clară: vreau să ajung să înțeleg sisteme complete, nu doar să folosesc instrumente individuale. Pornesc de la programare, sisteme și networking, apoi conectez aceste fundamente cu AI Engineering, Cloud, DevOps, Cybersecurity și Software Engineering."
+          :"I am building my path in technology with patience, discipline and a clear direction: I want to understand complete systems, not only use individual tools. I am starting with programming, systems and networking, then connecting those foundations with AI Engineering, Cloud, DevOps, Cybersecurity and Software Engineering."}</p>
+
+        <div class="actions">
+          <a class="btn btn-primary route-link" href="/roadmap" data-route="/roadmap">${ro?"Vezi roadmap-ul complet":"Explore the full roadmap"}</a>
+          <a class="btn btn-secondary route-link" href="/proiecte" data-route="/proiecte">${ro?"Descoperă proiectele":"Explore projects"}</a>
+        </div>
+
+        <div class="home-quickfacts">
+          <div><small>${ro?"FOCUS":"FOCUS"}</small><strong>${ro?"Engineering & practică":"Engineering & practice"}</strong></div>
+          <div><small>${ro?"LOCAȚIE":"LOCATION"}</small><strong>Lake King, WA</strong></div>
+          <div><small>${ro?"DIRECȚIE":"DIRECTION"}</small><strong>${ro?"Sisteme complete":"Complete systems"}</strong></div>
+        </div>
+      </div>
+
+      <aside class="profile-panel home-profile">
+        <div class="profile-top"><span>LIVE PROFILE</span><span class="online">● ONLINE</span></div>
+        <div class="avatar"><img id="avatar" src="https://avatars.githubusercontent.com/u/285664462?v=4" alt="Mihai Teleuca" width="130" height="130"></div>
+        <h2 id="profileName">Mihai Teleuca</h2><p id="profileLogin">@MihaiTeleuca</p>
+        <div class="badges"><span>AI</span><span>Cloud</span><span>DevOps</span><span>Cybersecurity</span><span>Python</span><span>Software</span></div>
+        <div class="info-grid">
+          <div><small>${ro?"LOCAȚIE":"LOCATION"}</small><strong>Lake King, Western Australia</strong></div>
+          <div><small>${ro?"FOCUS ACTUAL":"CURRENT FOCUS"}</small><strong>${ro?"Învățare • proiecte • documentare":"Learning • building • documenting"}</strong></div>
+        </div>
+        <div class="metrics">
+          <article><strong id="heroRepos">—</strong><span>Repos</span></article>
+          <article><strong id="heroFollowers">—</strong><span>Followers</span></article>
+          <article><strong id="heroStars">—</strong><span>Stars</span></article>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="home-strip">
+    <div class="container home-strip-grid">
+      <div><span>01</span><strong>${ro?"Învăț în profunzime":"Learn with depth"}</strong><small>${ro?"Nu doar pentru a termina un curs.":"Not only to finish a course."}</small></div>
+      <div><span>02</span><strong>${ro?"Construiesc practic":"Build practically"}</strong><small>${ro?"Transform teoria în proiecte.":"Turn theory into projects."}</small></div>
+      <div><span>03</span><strong>${ro?"Conectez domeniile":"Connect disciplines"}</strong><small>${ro?"Cod, infrastructură, securitate și AI.":"Code, infrastructure, security and AI."}</small></div>
+      <div><span>04</span><strong>${ro?"Documentez progresul":"Document progress"}</strong><small>${ro?"Clar, verificabil și sincer.":"Clearly, verifiably and honestly."}</small></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      ${sectionHead("01",ro?"MISIUNEA MEA":"MY MISSION",
+        ro?"Vreau să devin genul de om tehnic care înțelege imaginea completă.":"I want to become the kind of technical professional who understands the full picture.",
+        ro?"O aplicație modernă nu înseamnă doar cod. Înseamnă date, API-uri, rețea, infrastructură, deployment, monitorizare, securitate și experiență pentru utilizator. Roadmap-ul meu este construit tocmai pentru a lega aceste piese."
+          :"A modern application is not only code. It is data, APIs, networking, infrastructure, deployment, monitoring, security and user experience. My roadmap is designed to connect those pieces."
+      )}
+      <div class="cards-3 home-mission-cards">
+        <article class="card">
+          <span class="k">01 / FOUNDATION</span>
+          <h3>${ro?"Fundamente înainte de specializare":"Foundations before specialization"}</h3>
+          <p>${ro
+            ?"Python, Git, Linux, Windows, networking și web sunt baza. Fără ele, AI, Cloud, DevOps sau Cybersecurity ar deveni doar o colecție de comenzi și interfețe pe care le-aș folosi fără să le înțeleg cu adevărat."
+            :"Python, Git, Linux, Windows, networking and web fundamentals are the base. Without them, AI, Cloud, DevOps or Cybersecurity would become only a collection of commands and interfaces used without truly understanding them."}</p>
+        </article>
+        <article class="card">
+          <span class="k">02 / ENGINEERING</span>
+          <h3>${ro?"De la instrumente la sisteme":"From tools to systems"}</h3>
+          <p>${ro
+            ?"Vreau să trec dincolo de întrebarea «cum folosesc acest tool?» și să ajung la «de ce există, ce problemă rezolvă, cum se integrează și ce se întâmplă atunci când ceva nu funcționează?»"
+            :"I want to move beyond “how do I use this tool?” toward “why does it exist, what problem does it solve, how does it integrate, and what happens when something fails?”"}</p>
+        </article>
+        <article class="card">
+          <span class="k">03 / PROOF</span>
+          <h3>${ro?"Proiectele sunt dovada":"Projects are the proof"}</h3>
+          <p>${ro
+            ?"Certificatele îmi pot structura învățarea, dar proiectele trebuie să demonstreze ce am înțeles. De aceea fiecare traseu important din roadmap are și o idee de proiect asociată."
+            :"Certificates can structure my learning, but projects should demonstrate what I understood. That is why every major roadmap track has a related project idea."}</p>
+        </article>
       </div>
     </div>
-    <aside class="profile-panel">
-      <div class="profile-top"><span>LIVE PROFILE</span><span class="online">● ONLINE</span></div>
-      <div class="avatar"><img id="avatar" src="https://avatars.githubusercontent.com/u/285664462?v=4" alt="Mihai Teleuca" width="130" height="130"></div>
-      <h2 id="profileName">Mihai Teleuca</h2><p id="profileLogin">@MihaiTeleuca</p>
-      <div class="badges"><span>AI</span><span>Cloud</span><span>DevOps</span><span>Cybersecurity</span><span>Python</span><span>Software</span></div>
-      <div class="info-grid">
-        <div><small>LOCATION</small><strong>Lake King, Western Australia</strong></div>
-        <div><small>CURRENT FOCUS</small><strong>${document.documentElement.dataset.lang==="ro"?"Învățare • proiecte • documentare":"Learning • building • documenting"}</strong></div>
-      </div>
-      <div class="metrics">
-        <article><strong id="heroRepos">—</strong><span>Repos</span></article>
-        <article><strong id="heroFollowers">—</strong><span>Followers</span></article>
-        <article><strong id="heroStars">—</strong><span>Stars</span></article>
-      </div>
-    </aside>
-  </div></section>
+  </section>
 
-  <section class="section"><div class="container">
-    ${sectionHead("01",document.documentElement.dataset.lang==="ro"?"DIRECȚIA MEA":"MY DIRECTION",x.direction_title,x.direction_copy)}
-    <div class="cards-3">${x.cards.map(card=>`<article class="card"><span class="k">${card[0]}</span><h3>${card[1]}</h3><p>${card[2]}</p></article>`).join("")}</div>
-  </div></section>
-
-  <section class="section"><div class="container">
-    ${sectionHead("02",document.documentElement.dataset.lang==="ro"?"DOMENII":"DISCIPLINES",document.documentElement.dataset.lang==="ro"?"Mai multe specializări. O singură fundație tehnică.":"Multiple specializations. One technical foundation.")}
-    <div class="cards-4">
-      <article class="card"><span class="k">AI</span><h3>AI Engineering</h3><p>${document.documentElement.dataset.lang==="ro"?"Generative AI, LLM APIs, RAG, evaluare, responsible AI și integrarea modelelor în aplicații.":"Generative AI, LLM APIs, RAG, evaluation, responsible AI and integrating models into applications."}</p></article>
-      <article class="card"><span class="k">CLOUD</span><h3>Cloud Engineering</h3><p>${document.documentElement.dataset.lang==="ro"?"Azure, identity, networking, compute, storage, securitate, monitorizare și design de infrastructură.":"Azure, identity, networking, compute, storage, security, monitoring and infrastructure design."}</p></article>
-      <article class="card"><span class="k">DEVOPS</span><h3>DevOps Engineering</h3><p>${document.documentElement.dataset.lang==="ro"?"Linux, Git, CI/CD, Docker, Infrastructure as Code, observability și Kubernetes.":"Linux, Git, CI/CD, Docker, Infrastructure as Code, observability and Kubernetes."}</p></article>
-      <article class="card"><span class="k">SECURITY</span><h3>Cybersecurity</h3><p>${document.documentElement.dataset.lang==="ro"?"Securitate defensivă, hardening, logging, incidente, vulnerabilități și laboratoare etice autorizate.":"Defensive security, hardening, logging, incidents, vulnerabilities and authorized ethical labs."}</p></article>
+  <section class="section home-focus-section">
+    <div class="container">
+      ${sectionHead("02",ro?"CE STUDIEZ":"WHAT I AM STUDYING",
+        ro?"Un ecosistem tehnic care se construiește strat cu strat.":"A technical ecosystem built layer by layer.",
+        ro?"Nu tratez aceste domenii ca pe niște insule. Fiecare dintre ele completează o parte din aceeași imagine."
+          :"I do not treat these disciplines as islands. Each one fills a different part of the same picture."
+      )}
+      <div class="home-domain-grid">
+        <article class="domain-card"><span>PY</span><h3>Python</h3><p>${ro?"Logică, automatizare, scripting, API-uri și fundația pentru proiecte AI și cloud.":"Logic, automation, scripting, APIs and the foundation for AI and cloud projects."}</p><small>FOUNDATION</small></article>
+        <article class="domain-card"><span>AI</span><h3>AI Engineering</h3><p>${ro?"Generative AI, LLM APIs, prompt design, RAG, evaluare și integrarea modelelor în aplicații.":"Generative AI, LLM APIs, prompt design, RAG, evaluation and integrating models into applications."}</p><small>ENGINEERING TRACK</small></article>
+        <article class="domain-card"><span>CL</span><h3>Cloud Engineering</h3><p>${ro?"Azure, identity, compute, storage, networking, securitate și observability.":"Azure, identity, compute, storage, networking, security and observability."}</p><small>INFRASTRUCTURE</small></article>
+        <article class="domain-card"><span>DO</span><h3>DevOps</h3><p>${ro?"CI/CD, Docker, Infrastructure as Code, Kubernetes și procese de livrare repetabile.":"CI/CD, Docker, Infrastructure as Code, Kubernetes and repeatable delivery processes."}</p><small>DELIVERY</small></article>
+        <article class="domain-card"><span>CY</span><h3>Cybersecurity</h3><p>${ro?"Hardening, logging, threat awareness, vulnerability management și răspuns la incidente.":"Hardening, logging, threat awareness, vulnerability management and incident response."}</p><small>SECURITY</small></article>
+        <article class="domain-card"><span>IT</span><h3>IT & Networking</h3><p>${ro?"Windows, Linux, DNS, TCP/IP, troubleshooting și înțelegerea infrastructurii de bază.":"Windows, Linux, DNS, TCP/IP, troubleshooting and understanding core infrastructure."}</p><small>SYSTEMS</small></article>
+      </div>
     </div>
-  </div></section>
+  </section>
 
-  <section class="section"><div class="container">
-    <div class="callout"><strong>${document.documentElement.dataset.lang==="ro"?"Acest site este construit să crească odată cu mine.":"This site is designed to grow with me."}</strong>
-    <p>${document.documentElement.dataset.lang==="ro"?"Pe măsură ce apar proiecte, repository-uri, certificări finalizate și noi competențe, structura site-ului rămâne aceeași, iar conținutul devine din ce în ce mai puternic.":"As projects, repositories, completed credentials and new skills are added, the structure stays consistent while the content becomes progressively stronger."}</p></div>
-  </div></section>`;
+  <section class="section home-project-preview">
+    <div class="container">
+      ${sectionHead("03",ro?"PROIECTE ÎN CONSTRUCȚIE":"PROJECTS IN MOTION",
+        ro?"Învățarea devine serioasă atunci când trebuie să construiești ceva.":"Learning becomes serious when you have to build something.",
+        ro?"Aceste proiecte sunt intenționat legate de roadmap: fiecare îmi oferă un loc în care să aplic ceea ce învăț."
+          :"These projects are intentionally connected to the roadmap: each gives me a place to apply what I am learning."
+      )}
+      <div class="cards-3">
+        ${projects.slice(0,3).map(p=>`<article class="panel card home-project-card" style="--accent:${p.accent}">
+          <div class="road-top"><span>${p.n}</span><em class="status">${statusText(p.status)}</em></div>
+          <h3>${p.title}</h3>
+          <p>${ro?p.ro:p.en}</p>
+          ${chips(p.chips)}
+        </article>`).join("")}
+      </div>
+      <div class="home-section-action"><a class="btn btn-secondary route-link" href="/proiecte" data-route="/proiecte">${ro?"Vezi toate proiectele":"View all projects"} →</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      ${sectionHead("04",ro?"ROADMAP PE SCURT":"ROADMAP AT A GLANCE",
+        ro?"Un drum lung, dar intenționat.":"A long road, but an intentional one.",
+        ro?"Ordinea contează: construiesc întâi fundația, apoi specializările, apoi proiecte cross-discipline și, în final, certificări profesionale verificabile."
+          :"Order matters: foundations first, then specializations, cross-discipline projects and eventually verifiable professional certifications."
+      )}
+      <div class="timeline home-roadmap-timeline">
+        <div class="item"><span>01</span><div><strong>${ro?"Fundamente tehnice":"Technical foundations"}</strong><p>Python • Git • Web • Linux • Windows • Networking</p></div></div>
+        <div class="item"><span>02</span><div><strong>${ro?"Specializări principale":"Primary engineering tracks"}</strong><p>AI Engineering • Cloud • DevOps • Cybersecurity</p></div></div>
+        <div class="item"><span>03</span><div><strong>${ro?"Proiecte care combină domeniile":"Cross-discipline projects"}</strong><p>${ro?"Cod + infrastructură + automatizare + securitate + documentație.":"Code + infrastructure + automation + security + documentation."}</p></div></div>
+        <div class="item"><span>04</span><div><strong>${ro?"Certificări recunoscute":"Recognized certifications"}</strong><p>${ro?"După ce competențele practice sunt suficient de solide.":"After the practical skills are strong enough."}</p></div></div>
+      </div>
+      <div class="home-section-action"><a class="btn btn-primary route-link" href="/roadmap" data-route="/roadmap">${ro?"Deschide roadmap-ul complet":"Open the complete roadmap"} →</a></div>
+    </div>
+  </section>
+
+  <section class="section home-github-preview">
+    <div class="container">
+      ${sectionHead("05","GITHUB",
+        ro?"Partea verificabilă a progresului meu.":"The verifiable side of my progress.",
+        ro?"Repository-urile publice și statisticile de mai jos vin direct din profilul meu GitHub."
+          :"The public repository data and statistics below come directly from my GitHub profile."
+      )}
+      <div class="home-github-layout">
+        <div class="cards-3 home-gh-stats">
+          <article class="card"><span class="k">PUBLIC REPOS</span><h3 id="repoCount">—</h3></article>
+          <article class="card"><span class="k">FOLLOWERS</span><h3 id="followersCount">—</h3></article>
+          <article class="card"><span class="k">ACCOUNT AGE</span><h3 id="accountAge">—</h3></article>
+        </div>
+        <div class="callout">
+          <strong>${ro?"Un portofoliu viu, nu o pagină terminată.":"A living portfolio, not a finished page."}</strong>
+          <p>${ro
+            ?"Pe măsură ce apar repository-uri, certificări reale și proiecte mai complexe, acest site va deveni o cronologie tehnică a progresului meu."
+            :"As repositories, real credentials and more complex projects appear, this site will become a technical timeline of my progress."}</p>
+          <a class="inline-link route-link" href="/github" data-route="/github">${ro?"Vezi GitHub live":"View live GitHub"} →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section home-final-cta">
+    <div class="container">
+      <div class="home-cta-panel">
+        <span class="k">${ro?"URMĂTORUL CAPITOL":"THE NEXT CHAPTER"}</span>
+        <h2>${ro?"Construiesc fundația acum, pentru a putea construi lucruri mai mari mai târziu.":"I am building the foundation now so I can build bigger things later."}</h2>
+        <p>${ro
+          ?"Acest portofoliu este locul în care voi conecta cursurile, proiectele, certificările și experiența practică într-o poveste profesională coerentă."
+          :"This portfolio is where I will connect courses, projects, credentials and practical experience into one coherent professional story."}</p>
+        <div class="actions">
+          <a class="btn btn-primary route-link" href="/despre" data-route="/despre">${ro?"Citește povestea mea":"Read my story"}</a>
+          <a class="btn btn-secondary route-link" href="/contact" data-route="/contact">${ro?"Contact & social":"Contact & socials"}</a>
+        </div>
+      </div>
+    </div>
+  </section>`;
 }
 
 function aboutPage(){
@@ -394,6 +524,7 @@ function normalizePath(path){
   return routes[p]?p:"/acasa";
 }
 function render(){
+  setMobileMenu(false);
   const path=normalizePath(location.pathname);
   if(location.pathname!==path && location.pathname!=="/") history.replaceState({}, "", path);
   document.querySelectorAll(".main-nav a").forEach(a=>a.classList.toggle("active",a.dataset.route===path));
@@ -479,6 +610,20 @@ async function loadGithub(){
     console.error(e);
     if($("repoList"))$("repoList").innerHTML='<div class="repo-placeholder">GitHub data temporarily unavailable.</div>';
   }
+}
+
+
+const mobileMenuBtn=$("mobileMenuBtn");
+const mobileDrawer=$("mobileDrawer");
+function setMobileMenu(open){
+  if(!mobileMenuBtn||!mobileDrawer)return;
+  mobileDrawer.classList.toggle("open",open);
+  mobileDrawer.setAttribute("aria-hidden",open?"false":"true");
+  mobileMenuBtn.setAttribute("aria-expanded",open?"true":"false");
+  mobileMenuBtn.textContent=open?"×":"☰";
+}
+if(mobileMenuBtn){
+  mobileMenuBtn.addEventListener("click",()=>setMobileMenu(!mobileDrawer.classList.contains("open")));
 }
 
 window.addEventListener("popstate",render);
