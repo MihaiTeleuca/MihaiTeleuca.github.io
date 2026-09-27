@@ -3,76 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a0710">
-  <meta name="description" content="Mihai Teleuca — technology portfolio focused on AI Engineering, Cloud, DevOps, Cybersecurity, Python and Software Development.">
+  <meta name="theme-color" content="#0b0812">
+  <meta name="description" content="Mihai Teleuca — professional technology portfolio focused on AI Engineering, Cloud, DevOps, Cybersecurity, Python and Software Development.">
+  <meta name="robots" content="index,follow">
   <meta property="og:title" content="Mihai Teleuca | Technology Portfolio">
   <meta property="og:description" content="AI Engineering • Cloud • DevOps • Cybersecurity • Python • Software Development">
   <meta property="og:type" content="website">
-  <title>Mihai Teleuca | Technology Portfolio</title>
+  <meta property="og:url" content="https://MihaiTeleuca.github.io/acasa">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/styles.css">
   <script defer src="/app.js"></script>
+  <title>Mihai Teleuca | Technology Portfolio</title>
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav-shell">
-      <div class="nav-left">
-        <div class="language">
+    <div class="container header-row">
+      <div class="header-left">
+        <div class="language-switch" aria-label="Language">
           <button type="button" data-lang-button="en">EN</button>
           <span>/</span>
           <button type="button" data-lang-button="ro">RO</button>
         </div>
 
-        <a class="brand route-link" href="/acasa" data-route="/acasa">
+        <a class="brand route-link" href="/acasa" data-route="/acasa" aria-label="Home">
           <span class="brand-mark">MT</span>
-          <span class="brand-copy">
+          <span class="brand-text">
             <strong>Mihai Teleuca</strong>
-            <small data-t="brand_subtitle">Technology Portfolio</small>
+            <small data-ui="brand_subtitle">Technology Portfolio</small>
           </span>
         </a>
       </div>
 
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="/acasa" class="route-link" data-route="/acasa" data-t="nav_home">Home</a>
-        <a href="/despre" class="route-link" data-route="/despre" data-t="nav_about">About</a>
-        <a href="/roadmap" class="route-link" data-route="/roadmap" data-t="nav_roadmap">Roadmap</a>
-        <a href="/proiecte" class="route-link" data-route="/proiecte" data-t="nav_projects">Projects</a>
-        <a href="/certificari" class="route-link" data-route="/certificari" data-t="nav_credentials">Credentials</a>
-        <a href="/github" class="route-link" data-route="/github">GitHub</a>
-        <a href="/contact" class="route-link" data-route="/contact" data-t="nav_contact">Contact</a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/acasa" data-route="/acasa" class="route-link" data-ui="nav_home">Home</a>
+        <a href="/despre" data-route="/despre" class="route-link" data-ui="nav_about">About</a>
+        <a href="/experienta" data-route="/experienta" class="route-link" data-ui="nav_experience">Experience</a>
+        <a href="/roadmap" data-route="/roadmap" class="route-link" data-ui="nav_roadmap">Roadmap</a>
+        <a href="/proiecte" data-route="/proiecte" class="route-link" data-ui="nav_projects">Projects</a>
+        <a href="/certificari" data-route="/certificari" class="route-link" data-ui="nav_credentials">Credentials</a>
+        <a href="/github" data-route="/github" class="route-link">GitHub</a>
+        <a href="/contact" data-route="/contact" class="route-link" data-ui="nav_contact">Contact</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="mobile-menu-btn" type="button" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
-        <button class="theme-btn" type="button" id="themeToggle" aria-label="Toggle theme">◐</button>
-        <a class="nav-cta" href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <div class="header-actions">
+        <button id="mobileMenuButton" class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <button id="themeToggle" class="theme-button" type="button" aria-label="Toggle theme">◐</button>
+        <a class="header-github" href="https://github.com/MihaiTeleuca" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div>
     </div>
   </header>
 
-  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-    <div class="container mobile-drawer-inner">
-      <a href="/acasa" class="route-link" data-route="/acasa" data-t="nav_home">Home</a>
-      <a href="/despre" class="route-link" data-route="/despre" data-t="nav_about">About</a>
-      <a href="/roadmap" class="route-link" data-route="/roadmap" data-t="nav_roadmap">Roadmap</a>
-      <a href="/proiecte" class="route-link" data-route="/proiecte" data-t="nav_projects">Projects</a>
-      <a href="/certificari" class="route-link" data-route="/certificari" data-t="nav_credentials">Credentials</a>
-      <a href="/github" class="route-link" data-route="/github">GitHub</a>
-      <a href="/contact" class="route-link" data-route="/contact" data-t="nav_contact">Contact</a>
-    </div>
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <nav class="container mobile-menu-grid" aria-label="Mobile navigation">
+      <a href="/acasa" data-route="/acasa" class="route-link" data-ui="nav_home">Home</a>
+      <a href="/despre" data-route="/despre" class="route-link" data-ui="nav_about">About</a>
+      <a href="/experienta" data-route="/experienta" class="route-link" data-ui="nav_experience">Experience</a>
+      <a href="/roadmap" data-route="/roadmap" class="route-link" data-ui="nav_roadmap">Roadmap</a>
+      <a href="/proiecte" data-route="/proiecte" class="route-link" data-ui="nav_projects">Projects</a>
+      <a href="/certificari" data-route="/certificari" class="route-link" data-ui="nav_credentials">Credentials</a>
+      <a href="/github" data-route="/github" class="route-link">GitHub</a>
+      <a href="/contact" data-route="/contact" class="route-link" data-ui="nav_contact">Contact</a>
+    </nav>
   </div>
 
-  <main id="app" class="app-shell" aria-live="polite"></main>
+  <main id="app" aria-live="polite"></main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-mark small">MT</span>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <div class="footer-identity">
+        <span class="brand-mark brand-mark-small">MT</span>
         <span>
           <strong>Mihai Teleuca</strong>
-          <small data-t="footer_stack">AI • Cloud • DevOps • Cybersecurity • Python • Software</small>
+          <small data-ui="footer_stack">AI • Cloud • DevOps • Cybersecurity • Python • Software</small>
         </span>
       </div>
-      <p data-t="footer_text">A living portfolio built around learning, practical work and long-term engineering goals.</p>
+      <p data-ui="footer_text">A living portfolio built around practical learning, transparent progress and long-term engineering goals.</p>
       <span id="year"></span>
     </div>
   </footer>

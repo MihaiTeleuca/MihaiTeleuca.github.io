@@ -1,0 +1,38 @@
+FINAL PORTFOLIO — GITHUB PAGES DEPLOYMENT
+
+Repository:
+https://github.com/MihaiTeleuca/MihaiTeleuca.github.io
+
+Upload/replace these files in the ROOT of the repository:
+
+- index.html
+- 404.html
+- styles.css
+- app.js
+- favicon.svg
+- site.webmanifest
+- robots.txt
+- sitemap.xml
+- README.md
+
+Commit message:
+Final professional portfolio redesign
+
+Then wait for GitHub Pages to redeploy and open:
+
+https://MihaiTeleuca.github.io/acasa
+
+Hard refresh on Windows:
+Ctrl + F5
+
+Clean client-side routes:
+- /acasa
+- /despre
+- /experienta
+- /roadmap
+- /proiecte
+- /certificari
+- /github
+- /contact
+
+No folders are required for this build.

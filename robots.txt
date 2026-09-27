@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://MihaiTeleuca.github.io/sitemap.xml
