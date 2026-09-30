@@ -93,7 +93,7 @@ const projects=[
    problemEn:"Make every new Python concept immediately useful through a practical tool.",problemRo:"Transformarea fiecărei noțiuni noi de Python într-un instrument practic imediat.",
    nextEn:"Build the first three utilities with clear documentation and tests.",nextRo:"Construirea primelor trei utilitare cu documentație clară și teste.",
    chips:["Python","Automation","CLI","Files","Testing"],link:null},
-  {n:"06",title:"CloudPulse Dashboard",status:"complete",accent:"#69c7ed",
+  {n:"06",title:"CloudPulse Dashboard",status:"live",accent:"#69c7ed",
    en:"A completed frontend cloud operations dashboard demo that simulates infrastructure monitoring, observability, FinOps and incident-management workflows without requiring a backend or database.",
    ro:"Un dashboard frontend finalizat pentru operațiuni cloud, care simulează monitorizarea infrastructurii, observability, FinOps și fluxuri de incident management fără backend sau bază de date.",
    problemEn:"Turn cloud operations concepts into a professional, interactive and publicly verifiable portfolio project.",problemRo:"Transformarea conceptelor de operațiuni cloud într-un proiect de portofoliu profesional, interactiv și verificabil public.",
