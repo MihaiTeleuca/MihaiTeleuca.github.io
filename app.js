@@ -93,12 +93,12 @@ const projects=[
    problemEn:"Make every new Python concept immediately useful through a practical tool.",problemRo:"Transformarea fiecărei noțiuni noi de Python într-un instrument practic imediat.",
    nextEn:"Build the first three utilities with clear documentation and tests.",nextRo:"Construirea primelor trei utilitare cu documentație clară și teste.",
    chips:["Python","Automation","CLI","Files","Testing"],link:null},
-  {n:"06",title:"CloudPulse Dashboard",status:"concept",accent:"#69c7ed",
-   en:"A cloud operations dashboard concept for visualizing resources, uptime, health, alerts and infrastructure status in one clean interface as my cloud knowledge expands.",
-   ro:"Un concept de dashboard pentru operațiuni cloud care vizualizează resurse, uptime, health, alerte și starea infrastructurii într-o singură interfață, pe măsură ce cunoștințele mele cloud se dezvoltă.",
-   problemEn:"Bring operational cloud signals into a simple learning-oriented dashboard.",problemRo:"Aducerea semnalelor operaționale din cloud într-un dashboard simplu, orientat spre învățare.",
-   nextEn:"Create a static data prototype first, then connect real cloud metrics later.",nextRo:"Crearea mai întâi a unui prototip cu date statice, apoi conectarea ulterioară la metrici cloud reale.",
-   chips:["Azure","Cloud","Monitoring","Dashboard","DevOps"],link:null}
+  {n:"06",title:"CloudPulse Dashboard",status:"complete",accent:"#69c7ed",
+   en:"A completed frontend cloud operations dashboard demo that simulates infrastructure monitoring, observability, FinOps and incident-management workflows without requiring a backend or database.",
+   ro:"Un dashboard frontend finalizat pentru operațiuni cloud, care simulează monitorizarea infrastructurii, observability, FinOps și fluxuri de incident management fără backend sau bază de date.",
+   problemEn:"Turn cloud operations concepts into a professional, interactive and publicly verifiable portfolio project.",problemRo:"Transformarea conceptelor de operațiuni cloud într-un proiect de portofoliu profesional, interactiv și verificabil public.",
+   nextEn:"Evolve the demo later with authenticated cloud APIs and real telemetry while keeping the current public version safe and credential-free.",nextRo:"Extinderea ulterioară a demo-ului cu API-uri cloud autentificate și telemetrie reală, păstrând versiunea publică actuală sigură și fără credențiale.",
+   chips:["HTML","CSS","JavaScript","Cloud Monitoring","FinOps","Incident Management"],link:"https://github.com/MihaiTeleuca/cloudpulse-dashboard",demo:"https://mihaiteleuca.github.io/cloudpulse-dashboard/#overview"}
 ];
 
 const completedCredentials=[
@@ -472,7 +472,7 @@ function projectsPage(){
         <div class="project-detail"><strong>${ro()?"PROBLEMA":"PROBLEM"}</strong><p>${ro()?p.problemRo:p.problemEn}</p></div>
         <div class="project-detail"><strong>${ro()?"URMĂTORUL MILESTONE":"NEXT MILESTONE"}</strong><p>${ro()?p.nextRo:p.nextEn}</p></div>
         ${chipList(p.chips)}
-        ${p.link?`<div class="project-links"><a href="${p.link}" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>`:""}
+        ${(p.demo||p.link)?`<div class="project-links">${p.demo?`<a href="${p.demo}" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>`:""}${p.link?`<a href="${p.link}" target="_blank" rel="noopener noreferrer">${ro()?"Repository GitHub":"GitHub Repository"} ↗</a>`:""}</div>`:""}
       </article>`).join("")}
     </div>
   </div></section>
